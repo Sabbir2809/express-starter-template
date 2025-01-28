@@ -9,14 +9,19 @@ import handleValidationError from "../errors/handleValidationError";
 import handleZodError from "../errors/handleZodError";
 import { TErrorResponse } from "../types/error";
 
-const globalErrorHandler: ErrorRequestHandler = (error, req, res, next): void => {
+const globalErrorHandler: ErrorRequestHandler = (
+  error,
+  req,
+  res,
+  next
+): void => {
   // default object
   const errorResponse: TErrorResponse = {
     statusCode: error.statusCode || 500,
     message: "Internal Server Error",
     errorMessage: error.message,
     errorDetails: error.errors,
-    stack: config.NODE_DEV === "development" ? error?.stack : null,
+    stack: config.node_environment === "staging" ? error?.stack : null,
   };
 
   // ZodError
