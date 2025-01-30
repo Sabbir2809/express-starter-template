@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import config from "../config";
+import config from "../../config";
 
 // bcrypt hash password
 export const hashPassword = async (password: string): Promise<string> => {

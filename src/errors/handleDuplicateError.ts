@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 const handleDuplicateError = (error: any) => {
   const statusCode = 409;
   const match = error.message.match(/"([^"]*)"/);

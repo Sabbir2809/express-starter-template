@@ -4,11 +4,11 @@ import { JwtPayload } from "jsonwebtoken";
 import config from "../config";
 import AppError from "../errors/AppError";
 import AuthError from "../errors/AuthError";
-import { TUserRole } from "../types/auth";
+import { User } from "../modules/Auth/Auth.model";
 import catchAsync from "../utils/catchAsync";
 import { verifyToken } from "../utils/jwt";
 
-const checkAuth = (...requiredRoles: TUserRole[]) => {
+const checkAuth = (...requiredRoles: string[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     // headers token
     const token = req.headers.authorization;
@@ -33,10 +33,10 @@ const checkAuth = (...requiredRoles: TUserRole[]) => {
     }
 
     // Authentication
-    // const user = await User.findById(userId);
-    // if (!user) {
-    //   throw new AuthError(404, "User Not Found");
-    // }
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new AuthError(404, "User Not Found");
+    }
 
     // authorization
     if (requiredRoles && !requiredRoles.includes(role)) {

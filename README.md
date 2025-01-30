@@ -9,7 +9,12 @@
 ## Technology Stack
 
 - **Programming Language:** TypeScript
-- **Framework and Library:** `express mongoose zod cors bcrypt cookie-parser cors jsonwebtoken`
+- **Backend Framework:** Express.js
+- **Database:** MongoDB (with Mongoose)
+- **Authentication:** JWT (JSON Web Token)
+- **Password Hashing:** bcrypt
+- **Input Validation:** Zod
+- **CORS:** For handling Cross-Origin Resource Sharing
 
 ## Project Setup Instructions
 
@@ -29,6 +34,7 @@
    ```bash
     NODE_ENVIRONMENT=your_environment
     PORT=500
+    CORS_ORIGIN=
     DATABASE_URL=your_database_url
 
     BCRYPT_SALT_ROUNDS=your_bcrypt_salt_rounds
